@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="All Tests">
+	<test name="Regression Suite">
+		<classes>
+			<class name="com.Ecomm_revised.TC_Login_Shopping_Checkout" />
+
+		</classes>
+	</test>
+</suite>

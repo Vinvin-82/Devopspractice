@@ -18,14 +18,19 @@ public class ExtentReportListener implements ITestListener, ISuiteListener {
 
     private static ExtentReports extent;
     private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
+    
+    
 
     @Override
     public void onStart(ISuite suite) {
-    	ExtentSparkReporter htmlReporter = new ExtentSparkReporter("test-output/ExtentReport.html");
+    	String reportPath = System.getProperty("user.dir") + "/test-output/ExtentReport.html";
+    	ExtentSparkReporter htmlReporter = new ExtentSparkReporter(reportPath);
+
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
-        extent.setSystemInfo("Project", "Telecom Domain API");
+        extent.setSystemInfo("Project", "Ecommerce Domain");
         extent.setSystemInfo("Tester", "Vinaya Bai");
+        System.out.println("Extent Report initialization started");
     }
 
     @Override
@@ -51,6 +56,9 @@ public class ExtentReportListener implements ITestListener, ISuiteListener {
 
     @Override
     public void onFinish(ISuite suite) {
-        extent.flush();  // Write everything to report
-    }
+    	  System.out.println("✅ Flushing report...");
+    	    extent.flush();
+    	    System.out.println("✅ Report flushed.");    }
+
 }
+
